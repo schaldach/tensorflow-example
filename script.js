@@ -63,7 +63,7 @@ function drawKeypoints(keypoints, ctx) {
     ctx.strokeStyle = "red"
     for (i = 0; i < facePath.length; i++) {
         let rightKeyPoint = keypoints[facePath[i]]
-        if (rightKeyPoint.score > 0.2) {
+        if (rightKeyPoint.score > 0.15) {
             if (i == 0) {
                 ctx.moveTo(rightKeyPoint.x, rightKeyPoint.y)
             }
@@ -77,7 +77,7 @@ function drawKeypoints(keypoints, ctx) {
     ctx.beginPath()
     for (i = 0; i < upperBodyPath.length; i++) {
         let rightKeyPoint = keypoints[upperBodyPath[i]]
-        if (rightKeyPoint.score > 0.2) {
+        if (rightKeyPoint.score > 0.15) {
             if (i == 0) {
                 ctx.moveTo(rightKeyPoint.x, rightKeyPoint.y)
             }
@@ -91,7 +91,7 @@ function drawKeypoints(keypoints, ctx) {
     ctx.beginPath()
     for (i = 0; i < bodyPath.length; i++) {
         let rightKeyPoint = keypoints[bodyPath[i]]
-        if (rightKeyPoint.score > 0.2) {
+        if (rightKeyPoint.score > 0.15) {
             if (i == 0) {
                 ctx.moveTo(rightKeyPoint.x, rightKeyPoint.y)
             }
@@ -105,7 +105,7 @@ function drawKeypoints(keypoints, ctx) {
     ctx.beginPath()
     for (i = 0; i < lowerBodyPath.length; i++) {
         let rightKeyPoint = keypoints[lowerBodyPath[i]]
-        if (rightKeyPoint.score > 0.2) {
+        if (rightKeyPoint.score > 0.15) {
             if (i == 0) {
                 ctx.moveTo(rightKeyPoint.x, rightKeyPoint.y)
             }
