@@ -1,14 +1,15 @@
 .display{
     width: 400px;
     border: 2px solid black;
-    display: flex;
+    overflow: visible;
+    position: relative;
     justify-content: center;
+    display: flex;
     align-items: center;
     height: 400px;
 }
 video{
     position: absolute;
-    z-index: 1;
     width: 400px;
     height: 400px;
 }
@@ -16,5 +17,4 @@ canvas{
     position: absolute;
     width: 400px;
     height: 400px;
-    z-index: 2;
 }

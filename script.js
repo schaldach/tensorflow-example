@@ -32,13 +32,17 @@ playButton.onclick = async () => {
     }
 
 }
+let drawn = true
 async function predictWebcam() {
-    const detector = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, detectorConfig);
-    await detector.estimatePoses(video, {}).then(poses => {
-        console.log(poses)
-        drawResults(canvas, poses)
-    })
-    window.requestAnimationFrame(predictWebcam);
+    if(drawn){
+        drawn = false
+        const detector = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, detectorConfig);
+        await detector.estimatePoses(video, {}).then(poses => {
+            drawResults(canvas, poses)
+        })
+        window.requestAnimationFrame(predictWebcam);
+    }
+    
 }
 
 
@@ -48,12 +52,18 @@ function drawResults(canvas, poses) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     poses.forEach((pose) => {
         drawKeypoints(pose.keypoints, ctx);
+        console.log(pose)
     })
 }
 function drawKeypoints(keypoints, ctx) {
     for (let i = 0; i < keypoints.length; i++) {
         const keypoint = keypoints[i];
-        const { x, y } = keypoint;
-        ctx.fillRect(x, y, 2, 2);
+        console.log(keypoint)
+        const { x, y, score } = keypoint
+        if(score>0.2){
+            ctx.fillRect(x, y, 5, 5);
+        }
+        
     }
+    drawn = true
 }
